@@ -11,7 +11,7 @@ const Patients = () => {
   useEffect(() => {
     const fetchData = async() => {
       try {
-        const response = await axios.get('http://localhost:8080/patient/GetPatients')
+        const response = await axios.get(`${window.location.origin}/patient/GetPatients`)
         setAppointments(response.data)
       } catch (error) {
         console.log(error)

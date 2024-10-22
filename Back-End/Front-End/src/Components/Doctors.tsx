@@ -28,7 +28,7 @@ const Doctors = () => {
   useEffect(()=>{
     const fetch = async() => {
       try {
-        const response = await axios.get("http://localhost:8080/doctor/GetAllDoctors")
+        const response = await axios.get(`${window.location.origin}/doctor/GetAllDoctors`)
         setDoctors(response.data)
       } catch (error) {
         console.log(error)
@@ -40,7 +40,7 @@ const Doctors = () => {
   useEffect( () => {
     const fetch = async() => {
       try {
-        const response = await axios.get(`http://localhost:8080/doctor/getDoctor/${id}`)
+        const response = await axios.get(`${window.location.origin}/doctor/getDoctor/${id}`)
         setEditDoctorDetail(response.data[0])
       } catch (error) {
         console.log(error)

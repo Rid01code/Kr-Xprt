@@ -113,7 +113,7 @@ export const AppointedPatientAndDoctorProvider = ({children} : {children: ReactN
                 setDateInput(''); 
             } else {
                 axios
-                    .post("http://localhost:8080/patient/CreatePatient", {
+                    .post(`${window.location.origin}/patient/CreatePatient`, {
                         nameInput,
                         ageInput,
                         genderInput,
@@ -146,7 +146,7 @@ export const AppointedPatientAndDoctorProvider = ({children} : {children: ReactN
     
 
     const deletePatient = (id: number) => {
-        axios.delete(`http://localhost:8080/patient/DeletePatient/${id}`)
+        axios.delete(`${window.location.origin}/patient/DeletePatient/${id}`)
             .then(() => {
                 setAppointments((prevAppointments) => prevAppointments.filter((appointment) => appointment.Id !== id));
             });
@@ -177,7 +177,7 @@ export const AppointedPatientAndDoctorProvider = ({children} : {children: ReactN
                 setDateInput(''); 
             } else {
                 axios
-                    .put(`http://localhost:8080/patient/UpdatePatient/${id}`, {
+                    .put(`${window.location.origin}/patient/UpdatePatient/${id}`, {
                         nameInput,
                         ageInput,
                         genderInput,
@@ -224,7 +224,7 @@ export const AppointedPatientAndDoctorProvider = ({children} : {children: ReactN
 
 
     const addDoctor = () => {
-        axios.post("http://localhost:8080/doctor/CreateDoctor" ,{doctorNameInput , doctorPhoneNumberInput , doctorSpecialtyInput})
+        axios.post(`${window.location.origin}/doctor/CreateDoctor` ,{doctorNameInput , doctorPhoneNumberInput , doctorSpecialtyInput})
         .then((res) => {
             const newDoctor = {
                 Id: res.data.Id,
@@ -250,7 +250,7 @@ export const AppointedPatientAndDoctorProvider = ({children} : {children: ReactN
     }
 
     const editDoctor = (id: number ) => {
-        axios.put(`http://localhost:8080/doctor/UpdateDoctor/${id}` , {doctorNameInput , doctorPhoneNumberInput , doctorSpecialtyInput})
+        axios.put(`${window.location.origin}/doctor/UpdateDoctor/${id}` , {doctorNameInput , doctorPhoneNumberInput , doctorSpecialtyInput})
         .then((res) => {
             console.log(res)
             setDoctors((prevDoctors) => prevDoctors.map((doctor) => {

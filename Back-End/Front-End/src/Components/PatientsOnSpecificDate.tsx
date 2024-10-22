@@ -20,7 +20,7 @@ const PatientsOnSpecificDate = () => {
     useEffect(() => {
         const fetchPatient = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/patient/GetPatientByRegistrationDate/${date}`)
+                const response = await axios.get(`${window.location.origin}/patient/GetPatientByRegistrationDate/${date}`)
                 setPatientsOnSpecificDate(response.data)
             } catch (error) {
                 console.log(error)
