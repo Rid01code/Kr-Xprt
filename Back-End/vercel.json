@@ -1,27 +1,14 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "Back-End/server.js",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "Front-End/dist/**",
-        "use": "@vercel/static"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/patient/(.*)",
-        "dest": "Back-End/server.js"
-      },
-      {
-        "src": "/doctor/(.*)",
-        "dest": "Back-End/server.js"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "Front-End/dist/$1"
-      }
-    ]
-  }
+  "builds" : [
+    {
+      "src" : "./server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes":[
+    {
+      "src": "/.",
+      "dest": "server.js"
+    }
+  ]
+}
