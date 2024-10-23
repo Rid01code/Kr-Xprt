@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 require("./Connection/Connection");
-const patientApi = require("./routes/Patients");
-const doctorApi = require("./routes/Doctors");
+const patientApi = require("./Routes/Patients");
+const doctorApi = require("./Routes/Doctors");
 
 const app = express();
 app.use(express.json());
