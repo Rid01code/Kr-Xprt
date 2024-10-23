@@ -9,10 +9,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/patient", patientApi);
-app.use("/doctor", doctorApi);
+// API routes
+app.use("/api/patient", patientApi);
+app.use("/api/doctor", doctorApi);
 
-if (process.env.NODE_ENV !== 'production') {
+// Serve static files in production
+if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, "Front-End", "dist")));
     
     app.get('*', (req, res) => {
@@ -20,11 +22,9 @@ if (process.env.NODE_ENV !== 'production') {
     });
 }
 
-if (process.env.NODE_ENV !== 'production') {
-    const port = 8080;
-    app.listen(port, () => {
-        console.log(`listening to the port ${port}`);
-    });
-}
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+    console.log(`listening to the port ${port}`);
+});
 
 module.exports = app;

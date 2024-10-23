@@ -34,7 +34,7 @@ const Appointment = () => {
         useEffect(() => {
             const fetch = async() => {
                 try {
-                    const response = await axios.get(`${window.location.origin}/patient/GetPatientId/${id}`)
+                    const response = await axios.get(`${window.location.origin}/api/patient/GetPatientId/${id}`)
                     setEditPatientDetail(response.data[0])
                 } catch (error) {
                     console.log(error)
@@ -46,7 +46,7 @@ const Appointment = () => {
         useEffect( () => {
             const fetch = async() => {
                 try {
-                    const response = await axios.get(`${window.location.origin}/doctor/getDoctor/${id}`)
+                    const response = await axios.get(`${window.location.origin}/api/doctor/getDoctor/${id}`)
                     setDoctors(response.data)
                 } catch (error) {
                     console.log(error)
@@ -58,7 +58,7 @@ const Appointment = () => {
         useEffect(()=>{
             const fetch = async() => {
             try {
-                const response = await axios.get(`${window.location.origin}/doctor/GetAllDoctors`)
+                const response = await axios.get(`${window.location.origin}/api/doctor/GetAllDoctors`)
                 setDoctors(response.data)
             } catch (error) {
                 console.log(error)
