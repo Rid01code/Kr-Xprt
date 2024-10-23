@@ -18,7 +18,9 @@ const Patients = () => {
       }
     };
     fetchData()
-  },[setAppointments])  
+  }, [setAppointments])  
+  
+  console.log(window)
 
   return (
     <div className={styles.patientBox}>

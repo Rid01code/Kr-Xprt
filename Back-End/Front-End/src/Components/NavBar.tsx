@@ -1,7 +1,8 @@
 import { useState , useEffect } from "react";
 import { Link, useLocation } from "react-router-dom"
 import styles from "./allCss.module.css"
-import { SlCalender } from "react-icons/sl";
+import { SlCalender } from  "react-icons/sl";
+
 import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
