@@ -2,15 +2,30 @@
   "version": 2,
   "builds": [
     {
-      "src": "*.js",
-      "use": "@vercel/node",
-      "config": {}
+      "src": "server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "Front-End/dist/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
+      "src": "/patient/(.*)",
+      "dest": "server.js"
+    },
+    {
+      "src": "/doctor/(.*)",
+      "dest": "server.js"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/Front-End/dist/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/Front-End/dist/index.html"
     }
   ]
-} 
+}

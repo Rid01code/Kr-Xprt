@@ -12,13 +12,19 @@ app.use(cors());
 app.use("/patient", patientApi);
 app.use("/doctor", doctorApi);
 
-app.use(express.static(path.resolve(__dirname, "Front-End", "dist")));
+if (process.env.NODE_ENV !== 'production') {
+    app.use(express.static(path.resolve(__dirname, "Front-End", "dist")));
+    
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, "Front-End", "dist", "index.html"));
+    });
+}
 
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname , "Front-End" , "dist" , "index.html"))
-});
-
+if (process.env.NODE_ENV !== 'production') {
     const port = 8080;
     app.listen(port, () => {
         console.log(`listening to the port ${port}`);
     });
+}
+
+module.exports = app;
