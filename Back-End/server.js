@@ -9,8 +9,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/patient", patientApi);
-app.use("/doctor", doctorApi);
+app.use("api/patient", patientApi);
+app.use("api/doctor", doctorApi);
 
 if (process.env.NODE_ENV !== 'production') {
     app.use(express.static(path.resolve(__dirname, "Front-End", "dist")));
