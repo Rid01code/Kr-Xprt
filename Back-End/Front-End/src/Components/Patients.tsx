@@ -28,7 +28,7 @@ const Patients = () => {
         <p>No Patient Yet</p>
       ):(
         <ul className={styles.patientUL}>
-          {appointments.map((appointment , index) => (
+          { Array.isArray(appointments) && appointments.map((appointment , index) => (
               <li key={index} className={styles.patientListBox}>
                 <div>
                   <p className={styles.patientName}>{appointment.Name}</p>

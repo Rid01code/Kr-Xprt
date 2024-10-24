@@ -122,7 +122,7 @@ const Doctors = () => {
         <h1 className={styles.patientBoxHeading}>Doctors</h1>
 
         <ul className={styles.patientUL}>
-          {doctors.map((doctor) => (
+          {Array.isArray(doctors) && doctors.map((doctor) => (
             <li key={doctor.Id} className={styles.patientListBox}>
               <div>
                 <p className={styles.patientName}>Dr.{doctor.Name}</p>

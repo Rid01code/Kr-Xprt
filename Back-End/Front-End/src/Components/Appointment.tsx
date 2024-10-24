@@ -67,10 +67,16 @@ const Appointment = () => {
             fetch()
         }, [])
     
-    const formatDate = (dateString: string) => {
-        const date = new Date(dateString);
-        return date.toISOString().split('T')[0];
-    };
+        const formatDate = (dateString: string) => {
+            if (!dateString) {
+                return ''; // or return a default date string if needed
+            }
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) {
+                return ''; // Handle invalid date case
+            }
+            return date.toISOString().split('T')[0];
+        };
 
         useEffect(() => {
             if(editPatientDetail != null){
@@ -185,7 +191,7 @@ const Appointment = () => {
                         className={styles.inputsBox}
                         value={appointedDoctorInput}
                         onChange={(e) => setAppointedDoctorInput(e.target.value)}>
-                        {doctors.map((doctor , index) => (
+                        {Array.isArray(doctors) && doctors.map((doctor , index) => (
                             <option key={index}> Dr.{doctor.Name} - {doctor.Specialty}</option>
                         ))}
                     </select>
