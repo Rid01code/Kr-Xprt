@@ -12,11 +12,16 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/patient/(.*)",
       "dest": "server.js"
     },
     {
-      "handle": "filesystem"
+      "src": "/doctor/(.*)",
+      "dest": "server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/Front-End/dist/$1"
     },
     {
       "src": "/(.*)",
